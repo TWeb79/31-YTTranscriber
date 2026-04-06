@@ -46,20 +46,21 @@ This repository now includes a minimal FastAPI-based web UI and a Docker setup.
 
 Service ports (per RULES_ports.md):
 
-- FastAPI API: 8130 (project 30 → 81NN pattern)
+- Web UI: 8031 (project 31 → 80NN pattern)
+- FastAPI API: 8131 (project 31 → 81NN pattern)
 
 Run locally with Python:
 
 ```bash
 pip install -r requirements.txt
-uvicorn app.main:app --host 0.0.0.0 --port 8130
+uvicorn app.main:app --host 0.0.0.0 --port 8131
 ```
 
 Or with Docker:
 
 ```bash
 docker compose up --build
-# then open http://localhost:8130 in your browser
+# then open http://localhost:8131 in your browser (FastAPI) or http://localhost:8031 for the web UI
 ```
 
 ## Features

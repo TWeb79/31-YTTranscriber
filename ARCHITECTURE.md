@@ -7,7 +7,7 @@ Components
 - yt_transcriber.py: Core transcription logic. Extracts video IDs, fetches native YouTube captions via youtube-transcript-api or collects metadata via yt-dlp. Produces markdown transcript files in transcripts/.
 - app/main.py: FastAPI wrapper exposing endpoints for transcribing (GET /api/transcribe) and reporting available optional dependencies. Serves static frontend located at app/frontend/.
 - app/frontend/index.html: Minimal single-file frontend calling the API.
-- Dockerfile / docker-compose.yml: Containerized deployment for local development. The FastAPI service listens on port 8130 (per RULES_ports.md layout for project 30 → 81NN).
+- Dockerfile / docker-compose.yml: Containerized deployment for local development. The FastAPI service listens on port 8131 and the web UI is exposed on 8031 (per RULES_ports.md layout for project 31 → 81NN/80NN).
 - tests/: unit tests for core utilities.
 
 Data Flow

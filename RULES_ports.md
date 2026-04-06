@@ -167,19 +167,19 @@ Suggested reserved ranges:
 
 ---
 
-## Project 30 Allocation
+## Project 31 Allocation
 
-For this project, the following ports are allocated following the 8x30<environment> pattern:
+For this project, the following ports are allocated following the 8x31<environment> pattern:
 
 | Port | Service Type              | Docker Service   |
 | ---- | ---------------------- | ------------- |
-| 8030 | Web dashboard          | brain-frontend |
-| 8130 | FastAPI service       | brain-api      |
-| 8230 | Database              | (reserved)    |
-| 8330 | Background workers    | (reserved)    |
-| 8430 | Vector database       | (reserved)    |
-| 8530 | Experimental services | (reserved)    |
-| 8630 | Admin tools           | (reserved)    |
+| 8031 | Web dashboard          | brain-frontend |
+| 8131 | FastAPI service       | brain-api      |
+| 8231 | Database              | (reserved)    |
+| 8331 | Background workers    | (reserved)    |
+| 8431 | Vector database       | (reserved)    |
+| 8531 | Experimental services | (reserved)    |
+| 8631 | Admin tools           | (reserved)    |
 
 Pattern: `8` + service_category + project_number
 
