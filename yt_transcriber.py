@@ -19,7 +19,7 @@ import re
 import json
 import tempfile
 import time
-from typing import Optional
+from typing import Optional, Any
 
 # ── Video ID extraction ───────────────────────────────────────────────────────
 
@@ -107,7 +107,7 @@ def _fetch_captions_with_timestamps(video_id: str, languages: Optional[list] = N
         from youtube_transcript_api import YouTubeTranscriptApi, NoTranscriptFound
         ytt = YouTubeTranscriptApi()
         transcript_list = ytt.list(video_id)
-        preferred = languages or ["en", "en-US", "en-GB"]
+        preferred = languages or ["en", "en-US", "en-GB","de", "de-DE", "de-AT", "de-CH"]
         try:
             transcript = transcript_list.find_manually_created_transcript(preferred)
         except NoTranscriptFound:
@@ -170,7 +170,7 @@ def transcribe_url(
 
     try:
         import yt_dlp
-        ydl_opts = {"quiet": True, "no_warnings": True, "skip_download": True}
+        ydl_opts: dict[str, Any] = {"quiet": True, "no_warnings": True, "skip_download": True}
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:  # type: ignore
             info = ydl.extract_info(url, download=False)
             title = info.get("title", "")

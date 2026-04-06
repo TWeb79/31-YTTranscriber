@@ -12,8 +12,11 @@ pip install youtube-transcript-api yt-dlp
 
 ```bash
 python yt_transcriber.py <url> [n] [model_size]
-```
 
+example: python yt_transcriber.py "https://www.youtube.com/watch?v=DPmtnb8NBog" 2   
+
+```
+  
 ### Parameters
 
 - `url` - YouTube video or playlist URL
