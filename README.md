@@ -40,6 +40,28 @@ python yt_transcriber.py "https://www.youtube.com/playlist?list=PLAYLIST_ID" 10
 
 Transcripts are saved to the `transcripts/` folder as `transcript_<VIDEO_ID>.md` files.
 
+## Web UI and Docker
+
+This repository now includes a minimal FastAPI-based web UI and a Docker setup.
+
+Service ports (per RULES_ports.md):
+
+- FastAPI API: 8130 (project 30 → 81NN pattern)
+
+Run locally with Python:
+
+```bash
+pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8130
+```
+
+Or with Docker:
+
+```bash
+docker compose up --build
+# then open http://localhost:8130 in your browser
+```
+
 ## Features
 
 - Fast caption extraction via YouTube's native captions

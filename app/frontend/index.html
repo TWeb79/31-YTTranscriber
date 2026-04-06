@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>YT Transcriber</title>
+    <style>
+      body{font-family:Arial,Helvetica,sans-serif;padding:20px}
+      input[type=text]{width:80%}
+      button{padding:6px 12px}
+      pre{white-space:pre-wrap;background:#f6f6f6;padding:10px}
+    </style>
+  </head>
+  <body>
+    <h1>YT Transcriber</h1>
+    <p>Enter a YouTube URL to fetch native captions (fast).</p>
+    <input id="url" type="text" placeholder="https://www.youtube.com/watch?v=..." />
+    <input id="n" type="number" value="1" min="1" style="width:4rem" />
+    <button id="go">Transcribe</button>
+
+    <h2>Result</h2>
+    <div id="result"></div>
+
+    <script>
+      const resultEl = document.getElementById('result');
+      document.getElementById('go').addEventListener('click', async ()=>{
+        resultEl.textContent = 'Loading...';
+        const url = document.getElementById('url').value;
+        const n = parseInt(document.getElementById('n').value || '1');
+        try{
+          const res = await fetch(`/api/transcribe?url=${encodeURIComponent(url)}&n=${n}`);
+          if(!res.ok){
+            resultEl.textContent = 'Error: ' + res.status + ' ' + await res.text();
+            return;
+          }
+          const data = await res.json();
+          if(n<=1){
+            resultEl.innerHTML = `<h3>${data.title}</h3><pre>${data.transcript || '(no transcript)'}</pre>`;
+          }else{
+            resultEl.innerHTML = '<pre>'+JSON.stringify(data, null, 2)+'</pre>';
+          }
+        }catch(e){
+          resultEl.textContent = 'Fetch error: '+e;
+        }
+      })
+    </script>
+  </body>
+</html>

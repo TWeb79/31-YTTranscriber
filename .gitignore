@@ -43,3 +43,14 @@ Thumbs.db
 # Environment
 .env
 .env.local
+
+# Docker and build artifacts
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Test/coverage caches
+.pytest_cache/
+.mypy_cache/
+.coverage
+.cache/
